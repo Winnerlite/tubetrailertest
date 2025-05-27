@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Movie & Trailer App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #8a2be2;
-            --primary-dark: #6a1b9a;
-            --anime: #e91e63;
-            --anime-dark: #c2185b;
-            --bg: #0a0a0e;
-            --card-bg: linear-gradient(145deg, #1a1a22, #2a2a32);
-            --text: #f0f0f0;
-            --text-secondary: #b0b0b0;
-            --glow: rgba(138, 43, 226, 0.3);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+       :root {
+    --primary: #d81b60;
+    --primary-dark: #ad1457;
+    --glow: rgba(216, 27, 96, 0.5);
+    --anime: #e91e63;
+    --anime-dark: #c2185b;
+    --bg: #0a0a0e;
+    --card-bg: linear-gradient(145deg, #1a1a22, #2a2a32);
+    --text: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 
         * {
             margin: 0;
@@ -111,39 +112,77 @@
             50% { opacity: 1; }
         }
 
-        .search-container button {
-            padding: 12px 20px;
-            font-size: 16px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 30px;
-            margin-left: 10px;
-            transition: var(--transition);
-            box-shadow: 0 0 10px var(--glow);
-        }
+       /* Search button */
+.search-container button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-left: 10px;
+    transition: var(--transition);
+    box-shadow: 0 0 10px var(--glow);
+}
 
-        .search-container button:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
+.search-container button:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
 
-        .reload-btn {
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: var(--transition);
-        }
+/* Reload button */
+.reload-btn {
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: var(--transition);
+    box-shadow: 0 0 10px var(--glow);
+}
 
-        .reload-btn:hover {
-            background: var(--primary-dark);
-            transform: rotate(90deg);
-        }
+.reload-btn:hover {
+    background: var(--primary-dark);
+    transform: rotate(90deg);
+}
+
+/* Carousel nav */
+.carousel-nav:hover {
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--glow);
+}
+
+/* Favorite button */
+.favorite-btn:hover {
+    transform: scale(1.2);
+    background: rgba(216, 27, 96, 0.3);
+}
+
+/* Pagination buttons */
+.pagination button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--glow);
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+/* Settings icon */
+.settings-icon.account {
+    background: var(--primary);
+}
 
         .search-history {
             position: absolute;
@@ -589,6 +628,140 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.profile-header {
+    position: relative;
+    margin: 0 15px 30px;
+    padding: 0;
+    background: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-banner {
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 0;
+}
+
+.profile-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.profile-avatar-container {
+    margin-top: -60px;
+    z-index: 2;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.profile-avatar:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--glow);
+}
+
+.avatar-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--glow), 0 0 30px var(--glow);
+    opacity: 0.7;
+    animation: pulse 2s infinite ease-in-out;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+.profile-header {
+    position: relative;
+    margin: 0 15px 20px; /* Reduced bottom margin */
+    padding: 0;
+    background: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-header p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+
+
+.edit-profile-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 0 10px var(--glow);
+}
+
+.edit-profile-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+body.light-mode .profile-header h3 {
+    color: #333;
+}
+
+body.light-mode .profile-header p {
+    color: #666;
+}
+
+body.light-mode .profile-stats {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .profile-banner {
+    background: linear-gradient(135deg, #e91e63, #ad1457);
+}
+
+
 .profile-avatar {
     width: 60px;
     height: 60px;
@@ -598,13 +771,22 @@
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    text-transform: capitalize;
+    overflow: hidden;
+    padding: 5px;
 }
 
-.profile-avatar i {
-    font-size: 24px;
-    color: var(--text-color);
+.profile-avatar span {
+    line-height: 1.2;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
 .profile-info h3 {
     margin: 0;
     font-size: 18px;
@@ -777,6 +959,24 @@
     opacity: 0.9;
 }
 
+
+#accountModal .modal-content {
+    padding: 20px;
+    text-align: center;
+}
+
+#accountModal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#accountModal button {
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    align-self: center;
+}
 /* Theme Variables (ensure these are defined) */
 :root {
     --primary: #6200ea;
@@ -790,6 +990,9 @@
 }
 
 .dark-mode {
+    --primary: #d81b60;
+    --primary-dark: #ad1457;
+    --glow: rgba(216, 27, 96, 0.5);
     --card-bg: #424242;
     --text-color: #ffffff;
     --text-secondary: #b0b0b0;
@@ -1170,77 +1373,360 @@
 
 
         /* Shorts Page Styles */
+/* Enhanced Shorts Player Styles */
 .shorts-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 0 10px;
-    max-width: 600px;
+    gap: 16px;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: calc(100vh - 180px); /* Adjust based on your header/footer height */
 }
 
 .shorts-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
-    border: 1px solid transparent;
-}
-
-.shorts-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 24px var(--glow);
-    border: 1px solid var(--primary);
-}
-
-.shorts-thumbnail {
     width: 100%;
-    aspect-ratio: 9/16;
-    object-fit: cover;
-    cursor: pointer;
+    height: 100%;
+    min-height: 80vh;
+    scroll-snap-align: start;
+    background: #000;
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.shorts-content {
-    padding: 15px;
-    background: rgba(0,0,0,0.2);
+.shorts-player {
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    object-fit: contain;
+    background: #000;
+    border: none;
+}
+
+.shorts-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    z-index: 2;
 }
 
 .shorts-title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--text-color);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .shorts-channel {
     font-size: 14px;
     color: var(--text-secondary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.shorts-controls {
+    position: absolute;
+    right: 16px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 3;
+}
+
+.shorts-control-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.shorts-control-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.shorts-control-btn i {
+    pointer-events: none;
+}
+
+.shorts-control-btn.active i {
+    color: #ff0000; /* Red heart when liked */
+}
+
+.shorts-autoplay {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    z-index: 3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .shorts-container {
+        height: calc(100vh - 160px);
+    }
+    
+    .shorts-card {
+        min-height: 75vh;
+    }
+    
+    .shorts-controls {
+        bottom: 80px;
+    }
 }
 
 @media (max-width: 480px) {
     .shorts-container {
-        padding: 0 5px;
+        height: calc(100vh - 140px);
     }
+    
+    .shorts-card {
+        min-height: 70vh;
+    }
+    
     .shorts-title {
         font-size: 14px;
     }
+    
     .shorts-channel {
         font-size: 12px;
     }
+    
+    .shorts-controls {
+        bottom: 60px;
+        gap: 12px;
+    }
+    
+    .shorts-control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+
+/* Portrait mode optimization */
+@media (orientation: portrait) {
+    .shorts-card {
+        min-height: 85vh;
+    }
+}
+
+/* Landscape mode optimization */
+@media (orientation: landscape) {
+    .shorts-card {
+        min-height: 90vh;
+    }
+    
+    .shorts-controls {
+        right: 24px;
+        bottom: 120px;
+    }
+}
+
+/* Prevent scrolling on body when shorts are open */
+body.shorts-open {
+    overflow: hidden;
+}
+
+
+.shorts-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    z-index: 2;
+}
+
+.shorts-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.shorts-channel {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.shorts-controls {
+    position: absolute;
+    right: 16px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 3;
+}
+
+.shorts-control-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.shorts-control-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+/* Auto-play indicator */
+.shorts-autoplay {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    z-index: 3;
+}
+
+.shorts-control-btn.active i {
+    color: #ff0000; /* Red heart when liked */
+}
+
+.premium-modal {
+    background: linear-gradient(145deg, #2a2a32, #1a1a22);
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+    padding: 30px;
+    border-radius: 20px;
+    animation: fadeInPremium 0.5s ease;
+}
+
+.premium-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.app-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--glow);
+}
+
+.premium-badge {
+    background: var(--primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+}
+
+.premium-blurb {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.app-version {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+body.light-mode .premium-modal {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+    border: 2px solid var(--primary);
+}
+
+body.light-mode .premium-blurb {
+    color: var(--text);
+}
+
+body.light-mode .app-version {
+    color: var(--text-secondary);
+}
+
+@keyframes fadeInPremium {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.auth-cta {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-cta h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+//For the sigin and login modal CTA<div></div>
+.auth-cta p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+body.light-mode .auth-cta h3 {
+    color: var(--primary);
+}
+
+body.light-mode .auth-cta p {
+    color: var(--text-secondary);
 }
     </style>
 </head>
 <body>
+     
    <div class="search-container">
     <div class="search-wrapper">
         <button id="reloadBtn" class="reload-btn">
@@ -1279,9 +1765,14 @@
         <div class="results-container" id="searchResults" style="display: none;"></div>
     </div>
 
-    <div id="shortsPage" class="page">
+   <div id="shortsPage" class="page">
     <div class="content" id="shortsContent">
-        <h2 class="section-title">Shorts</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="section-title">Shorts For You</h2>
+            <button id="refreshShorts" class="reload-btn" style="margin: 0;">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
         <div class="shorts-container" id="shortsResults"></div>
     </div>
 </div>
@@ -1289,25 +1780,28 @@
  <!-- Me Page -->
 <div id="mePage" class="page">
     <div class="profile-header">
-        <div class="profile-avatar">
-            <i class="fas fa-user"></i>
-        </div>
-        <div class="profile-info">
+        <div class="profile-banner"></div>
+        <div class="profile-avatar-container">
+            <div class="profile-avatar">
+                <img id="userAvatarImg" src="https://via.placeholder.com/100" alt="User Avatar">
+                <div class="avatar-glow"></div>
+            </div>
             <h3 id="userProfileName">Guest User</h3>
             <p id="userStatus">Basic Member</p>
         </div>
+        <button class="edit-profile-btn" id="editProfileBtn">Edit Profile</button>
     </div>
     <div class="me-content">
         <div class="stats-grid">
             <div class="stat-card">
                 <i class="fas fa-history"></i>
                 <h4>Watch History</h4>
-                <p><span id="watchHistoryCount">0</span> Videos</p>
+                <p><span id="meWatchHistoryCount">0</span> Videos</p>
             </div>
             <div class="stat-card">
                 <i class="fas fa-search"></i>
                 <h4>Search History</h4>
-                <p><span id="searchHistoryCount">0</span> Searches</p>
+                <p><span id="meSearchHistoryCount">0</span> Searches</p>
             </div>
         </div>
         <div class="settings-grid">
@@ -1372,11 +1866,14 @@
    <!-- Auth Modal -->
 <div id="authModal" class="modal">
     <div class="modal-content">
-        <h3 id="authModalTitle">Sign Up</h3>
+        <div class="auth-cta">
+            <h3 id="authModalTitle">Join TUBE TRAILER Today!</h3>
+            <p id="authModalBlurb">Unlock personalized content and premium features.</p>
+        </div>
         <form id="authForm">
             <input type="email" class="modal-input" id="authEmail" placeholder="Email" required>
             <input type="password" class="modal-input" id="authPassword" placeholder="Password" required>
-            <select class="modal-input" id="contentPreferences" required>
+            <select class="modal-input" id="contentPreferences" name="contentPreferences" required>
                 <option value="" disabled selected>Select your favorite content type</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>
@@ -1407,17 +1904,35 @@
     </div>
 </div>
 
-<!-- Account Modal -->
 <div id="accountModal" class="modal">
     <div class="modal-content">
-        <h3>Account</h3>
+        <h2>Account Settings</h2>
         <form id="accountForm">
-            <input type="text" id="userName" class="modal-input" placeholder="Name">
-            <input type="email" id="userEmail" class="modal-input" placeholder="Email">
+            <select class="modal-input" id="accountContentPreferences" required>
+                <option value="" disabled>Select your favorite content type</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="romance">Romance</option>
+                <option value="thriller">Thriller</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="adventure">Adventure</option>
+                <option value="animation">Animation</option>
+                <option value="documentary">Documentary</option>
+                <option value="anime">Anime</option>
+                <option value="music">Music</option>
+                <option value="gaming">Gaming</option>
+                <option value="vlogs">Vlogs</option>
+                <option value="tutorials">Tutorials</option>
+                <option value="cooking">Cooking</option>
+                <option value="sports">Sports</option>
+            </select>
             <div class="modal-actions">
+                <button type="submit" class="modal-btn primary" id="saveAccountBtn">Save</button>
                 <button type="button" class="modal-btn secondary" id="cancelAccountBtn">Cancel</button>
                 <button type="button" class="modal-btn secondary" id="signOutBtn">Sign Out</button>
-                <button type="submit" class="modal-btn primary">Save</button>
             </div>
         </form>
     </div>
@@ -1437,29 +1952,25 @@
 </div>
 
     <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="hideAboutModal()">×</span>
-            <h2>About This App</h2>
-            <strong>TUBETRAILER</strong>
-            <p>Your gateway to trending trailers, full movies, and anime highlights.</p>
-           <h3>Getting Started</h3>
-<p>Search any title or keyword in the top bar. Use the bottom navigation to switch between:</p>
-<ul>
-    <li><p>📹 <strong>Shorts</strong> - Quick, genre-based videos</li>
-    <li><p>🧭 <strong>Explore</strong> - Trailers, movies, and anime</li>
-    <li><p>⬇️ <strong>Download</strong> - Download content</li>
-    <li><p>⚙️ <strong>Me</strong> - Profile and settings</li>
-</ul>
-            <h3>Pro Tips</h3>
-            <ul>
-                <li>🔍 <strong>Smart searches:</strong> Add "trailer" or "anime" to queries</li>
-                <li>🌓 <strong>Dark/Light mode:</strong> Toggle in Appearance settings</li>
-                <li>🔄 <strong>Reload button:</strong> Top-left icon refreshes recommendations</li>
-            </ul>
-            <h3>What's Next?</h3>
-            <p>Coming soon: personalized recommendations, more!!</p>
+    <div class="modal-content premium-modal">
+        <span class="close-btn" onclick="hideAboutModal()">×</span>
+        <div class="premium-header">
+            <h1 class="app-name">TUBE TRAILER</h1>
+            <span class="premium-badge">Premium</span>
+        </div>
+        <p class="premium-blurb">
+            Experience the ultimate entertainment hub with TUBE TRAILER Premium. 
+            Dive into a curated world of trending trailers, full-length movies, 
+            and exclusive anime, personalized to your tastes. Enjoy seamless 
+            streaming, offline downloads, and a sleek, ad-free interface designed 
+           just for you!.
+        </p>
+        <div class="app-version">
+            <span>Version 1.2.3</span>
         </div>
     </div>
+</div>
+
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
@@ -1477,12 +1988,39 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const apiKeys = ["AIzaSyDRA0Fzdwg5oIIxBBt2NowcrdbeucEa6cc"];
+    const apiKeys = ["AIzaSyDRA0Fzdwg5oIIxBBt2NowcrdbeucEa6cc",
+    "AIzaSyC_syRSRRxQR1DbtHZzMw9glxcR7My8ly4",
+
+"AIzaSyABi7KdpAijF9gu09dSefpXJyhjIRY66Eg",
+            "AIzaSyAqLty-6vku33b3bpdG5S4oLkyoimdw8TU",
+            "AIzaSyBYixFCdGHJ2P512iW010glQRvd93EB6O8",
+            "AIzaSyDLW2mkmVVgQcoUpM86VFtOaCegFvyVk_g",
+            "AIzaSyDe7rOrqZFH3vIqP9zBtNkQ0Lqz4mBz9BI",
+            "AIzaSyDFH66idOZwfx-PfO1AXdsUeCa2gV1kCk4",
+
+"AIzaSyAlbWmxyzhL2RaNPNlPsANzY7R0JZUj_TU",
+
+"AIzaSyC4WKW6-m7RlZyu6EctRsN9XjiOz5Z7GWk",
+
+"AIzaSyDSBtLwMoliYaFW09BnVyzTQADrGABHzKw",
+"AIzaSyCME7E2t1cd8JTwpXIgDSyAwVMja2QHkL8",
+
+"AIzaSyDdrHGuGB5IKzv6_h7Dkgc60magvKu7YRI",
+
+"AIzaSyDKnfDW7ujsfEFFGV3kWxsmQg9DDtRAUTM",
+
+"AIzaSyC7v1svD5oJFa9Sg4aXFvatOMiwKB2EG2A",
+
+"AIzaSyBS1tt0v9_lLc5HAIAFMkTYbRzVUL27yI0",
+
+"AIzaSyDRA0Fzdwg5oIIxBBt2NowcrdbeucEa6cc"];
     let currentKeyIndex = 0;
 
     let exploreCurrentPage = 0;
     let exploreTotalResults = [];
     const resultsPerPage = 26;
+
+
 
     let trailerResults = [];
     let movieResults = [];
@@ -1502,6 +2040,9 @@
             throw new Error("API key quota exhausted");
         }
     }
+//Event Listener for short search
+document.getElementById('refreshShorts').addEventListener('click', fetchShortsContent);
+
 
     function showLoading(show) {
         document.getElementById('loading').style.display = show ? 'flex' : 'none';
@@ -1521,6 +2062,30 @@
         errorElement.textContent = message;
         errorElement.style.display = 'block';
     }
+
+function saveToCache(key, data) {
+    const cacheEntry = {
+        data,
+        timestamp: new Date().toISOString()
+    };
+    localStorage.setItem(key, JSON.stringify(cacheEntry));
+}
+
+function loadFromCache(key, maxAgeHours = 24) {
+    const cacheEntry = JSON.parse(localStorage.getItem(key));
+    if (!cacheEntry || !cacheEntry.timestamp || !cacheEntry.data) return null;
+
+    const cacheTime = new Date(cacheEntry.timestamp);
+    const now = new Date();
+    const hoursDiff = (now - cacheTime) / (1000 * 60 * 60);
+
+    if (hoursDiff > maxAgeHours) {
+        localStorage.removeItem(key); // Clear expired cache
+        return null;
+    }
+    return cacheEntry.data;
+}
+
 
     function escapeHtml(unsafe) {
         if (!unsafe) return '';
@@ -1571,94 +2136,125 @@
     }
 
     function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
 
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('data-page') === pageId) {
-                item.classList.add('active');
-            }
-        });
-
-        const searchBar = document.querySelector('.search-container');
-        if (pageId === 'mePage') {
-            searchBar.style.display = 'none';
-            updateMeTabStats();
-        } else {
-            searchBar.style.display = 'flex';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-page') === pageId) {
+            item.classList.add('active');
         }
+    });
 
-        document.querySelectorAll('.pagination-container').forEach(p => {
-            p.style.display = pageId === 'mePage' ? 'none' : 'flex';
-        });
-
-        if (pageId === 'explorePage' && trailerResults.length === 0) {
-            fetchExploreContent();
-        }
+    // Hide search bar on Me & Shorts pages
+    const searchBar = document.querySelector('.search-container');
+    if (pageId === 'mePage' || pageId === 'shortsPage') {
+        searchBar.style.display = 'none';
+    } else {
+        searchBar.style.display = 'flex';
     }
 
-    async function fetchExploreContent() {
-        showLoading(true);
-        try {
-            const trailerResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+movie+trailers&type=video&key=${getApiKey()}`);
-            const trailerData = await trailerResponse.json();
-            if (trailerData.error) {
-                if (trailerData.error.code === 403) {
-                    switchApiKey();
-                    return fetchExploreContent();
-                }
-                throw new Error(trailerData.error.message);
-            }
-            trailerResults = sortItemsByPublishedDate(trailerData.items || []);
-
-            const movieResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+full+movie+-trailer&type=video&key=${getApiKey()}`);
-            const movieData = await movieResponse.json();
-            if (movieData.error) {
-                if (movieData.error.code === 403) {
-                    switchApiKey();
-                    return fetchExploreContent();
-                }
-                throw new Error(movieData.error.message);
-            }
-            const movieVideoIds = movieData.items.map(item => item.id.videoId).join(',');
-            const movieDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${movieVideoIds}&key=${getApiKey()}`);
-            const movieDetailsData = await movieDetailsResponse.json();
-            const fullMovies = movieData.items.map(item => ({
-                ...item,
-                contentDetails: movieDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
-            }));
-            movieResults = sortItemsByPublishedDate(fullMovies.filter(isFullLengthVideo));
-
-            const animeResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+anime+trailer+OR+full+movie+-review&type=video&key=${getApiKey()}`);
-            const animeData = await animeResponse.json();
-            if (animeData.error) {
-                if (animeData.error.code === 403) {
-                    switchApiKey();
-                    return fetchExploreContent();
-                }
-                throw new Error(animeData.error.message);
-            }
-            const animeVideoIds = animeData.items.map(item => item.id.videoId).join(',');
-            const animeDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${animeVideoIds}&key=${getApiKey()}`);
-            const animeDetailsData = await animeDetailsResponse.json();
-            const fullAnime = animeData.items.map(item => ({
-                ...item,
-                contentDetails: animeDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
-            }));
-            animeResults = sortItemsByPublishedDate(fullAnime.filter(video => isFullLengthVideo(video) && isAnimeRelated(video)));
-
+    // Load content when switching tabs
+    if (pageId === 'explorePage') {
+        const cachedTrailerResults = loadFromCache('cachedTrailerResults') || [];
+        const cachedMovieResults = loadFromCache('cachedMovieResults') || [];
+        const cachedAnimeResults = loadFromCache('cachedAnimeResults') || [];
+        if (cachedTrailerResults.length > 0 && cachedMovieResults.length > 0 && cachedAnimeResults.length > 0) {
+            console.log('Loading cached explore results from localStorage for explore page:', {
+                trailerResults: cachedTrailerResults.length + ' items',
+                movieResults: cachedMovieResults.length + ' items',
+                animeResults: cachedAnimeResults.length + ' items'
+            });
+            trailerResults = cachedTrailerResults;
+            movieResults = cachedMovieResults;
+            animeResults = cachedAnimeResults;
             displayExploreContent();
             createExploreCarousel();
             fetchForYouContent();
-        } catch (error) {
-            showError(`Failed to load content: ${error.message}`);
-        } finally {
-            showLoading(false);
+        } else {
+            console.log('No valid cached explore results found or cache expired for explore page. Fetching new content.');
+            fetchExploreContent();
         }
+    } else if (pageId === 'shortsPage') {
+        document.body.classList.add('shorts-open');
+        fetchShortsContent();
+    } else {
+        document.body.classList.remove('shorts-open');
     }
+
+    // Hide pagination on non-explore pages
+    document.querySelectorAll('.pagination-container').forEach(p => {
+        p.style.display = pageId === 'explorePage' ? 'flex' : 'none';
+    });
+}
+
+
+    async function fetchExploreContent() {
+    showLoading(true);
+    try {
+        const trailerResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+movie+trailers&type=video&key=${getApiKey()}`);
+        const trailerData = await trailerResponse.json();
+        if (trailerData.error) {
+            if (trailerData.error.code === 403) {
+                switchApiKey();
+                return fetchExploreContent();
+            }
+            throw new Error(trailerData.error.message);
+        }
+        trailerResults = sortItemsByPublishedDate(trailerData.items || []);
+
+        const movieResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+full+movie+-trailer&type=video&key=${getApiKey()}`);
+        const movieData = await movieResponse.json();
+        if (movieData.error) {
+            if (movieData.error.code === 403) {
+                switchApiKey();
+                return fetchExploreContent();
+            }
+            throw new Error(movieData.error.message);
+        }
+        const movieVideoIds = movieData.items.map(item => item.id.videoId).join(',');
+        const movieDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${movieVideoIds}&key=${getApiKey()}`);
+        const movieDetailsData = await movieDetailsResponse.json();
+        const fullMovies = movieData.items.map(item => ({
+            ...item,
+            contentDetails: movieDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
+        }));
+        movieResults = sortItemsByPublishedDate(fullMovies.filter(isFullLengthVideo));
+
+        const animeResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=latest+anime+trailer+OR+full+movie+-review&type=video&key=${getApiKey()}`);
+        const animeData = await animeResponse.json();
+        if (animeData.error) {
+            if (animeData.error.code === 403) {
+                switchApiKey();
+                return fetchExploreContent();
+            }
+            throw new Error(animeData.error.message);
+        }
+        const animeVideoIds = animeData.items.map(item => item.id.videoId).join(',');
+        const animeDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${animeVideoIds}&key=${getApiKey()}`);
+        const animeDetailsData = await animeDetailsResponse.json();
+        const fullAnime = animeData.items.map(item => ({
+            ...item,
+            contentDetails: animeDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
+        }));
+        animeResults = sortItemsByPublishedDate(fullAnime.filter(video => isFullLengthVideo(video) && isAnimeRelated(video)));
+
+        // Cache the results with timestamp
+        saveToCache('cachedTrailerResults', trailerResults);
+        saveToCache('cachedMovieResults', movieResults);
+        saveToCache('cachedAnimeResults', animeResults);
+
+        displayExploreContent();
+        createExploreCarousel();
+        fetchForYouContent();
+    } catch (error) {
+        showError(`Failed to load content: ${error.message}`);
+    } finally {
+        showLoading(false);
+    }
+}
 
     function createExploreCarousel() {
         const carouselItems = [
@@ -1789,6 +2385,7 @@
     }
 
     function generateVideoCard(video, isTrending = false) {
+    
         const card = document.createElement('div');
         card.className = 'card';
 
@@ -1890,83 +2487,87 @@
     }
 
     async function searchContent() {
-        const query = document.getElementById('search').value.trim();
-        if (!query) return;
+    const query = document.getElementById('search').value.trim();
+    if (!query) return;
 
-        saveToHistory(query, "");
-        let searches = JSON.parse(localStorage.getItem('searchCount')) || 0;
-        searches += 1;
-        localStorage.setItem('searchCount', JSON.stringify(searches));
+    saveToHistory(query, "");
+    let searches = JSON.parse(localStorage.getItem('searchCount')) || 0;
+    searches += 1;
+    localStorage.setItem('searchCount', JSON.stringify(searches));
 
-        if (document.getElementById('mePage').classList.contains('active')) {
-            updateMeTabStats();
-        }
-
-        showLoading(true);
-        try {
-            const trailerResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' trailer')}&type=video&key=${getApiKey()}`);
-            const trailerData = await trailerResponse.json();
-            if (trailerData.error) {
-                if (trailerData.error.code === 403) {
-                    switchApiKey();
-                    return searchContent();
-                }
-                throw new Error(trailerData.error.message);
-            }
-
-            const movieResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' full movie -trailer')}&type=video&videoDuration=long&key=${getApiKey()}`);
-            const movieData = await movieResponse.json();
-            if (movieData.error) {
-                if (movieData.error.code === 403) {
-                    switchApiKey();
-                    return searchContent();
-                }
-                throw new Error(movieData.error.message);
-            }
-
-            const animeResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' anime trailer OR full movie')}&type=video&key=${getApiKey()}`);
-            const animeData = await animeResponse.json();
-            if (animeData.error) {
-                if (animeData.error.code === 403) {
-                    switchApiKey();
-                    return searchContent();
-                }
-                throw new Error(animeData.error.message);
-            }
-
-            const movieVideoIds = movieData.items.map(item => item.id.videoId).join(',');
-            const movieDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${movieVideoIds}&key=${getApiKey()}`);
-            const movieDetailsData = await movieDetailsResponse.json();
-            const fullMovies = movieData.items.map(item => ({
-                ...item,
-                contentDetails: movieDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
-            }));
-
-            const animeVideoIds = animeData.items.map(item => item.id.videoId).join(',');
-            const animeDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${animeVideoIds}&key=${getApiKey()}`);
-            const animeDetailsData = await animeDetailsResponse.json();
-            const fullAnime = animeData.items.map(item => ({
-                ...item,
-                contentDetails: animeDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
-            }));
-
-            exploreTotalResults = [
-                ...trailerData.items,
-                ...fullMovies.filter(isFullLengthVideo),
-                ...fullAnime.filter(video => isFullLengthVideo(video) && isAnimeRelated(video))
-            ].sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
-
-            exploreCurrentPage = 0;
-            displaySearchResults();
-            updatePagination();
-            saveToHistory(query, exploreTotalResults[0]?.snippet?.thumbnails?.medium?.url || '');
-        } catch (error) {
-            showError(`Failed to search: ${error.message}`);
-            console.error('Search error:', error);
-        } finally {
-            showLoading(false);
-        }
+    if (document.getElementById('mePage').classList.contains('active')) {
+        updateMeTabStats();
     }
+
+    showLoading(true);
+    try {
+        const trailerResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' trailer')}&type=video&key=${getApiKey()}`);
+        const trailerData = await trailerResponse.json();
+        if (trailerData.error) {
+            if (trailerData.error.code === 403) {
+                switchApiKey();
+                return searchContent();
+            }
+            throw new Error(trailerData.error.message);
+        }
+
+        const movieResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' full movie -trailer')}&type=video&videoDuration=long&key=${getApiKey()}`);
+        const movieData = await movieResponse.json();
+        if (movieData.error) {
+            if (movieData.error.code === 403) {
+                switchApiKey();
+                return searchContent();
+            }
+            throw new Error(movieData.error.message);
+        }
+
+        const animeResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query + ' anime trailer OR full movie')}&type=video&key=${getApiKey()}`);
+        const animeData = await animeResponse.json();
+        if (animeData.error) {
+            if (animeData.error.code === 403) {
+                switchApiKey();
+                return searchContent();
+            }
+            throw new Error(animeData.error.message);
+        }
+
+        const movieVideoIds = movieData.items.map(item => item.id.videoId).join(',');
+        const movieDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${movieVideoIds}&key=${getApiKey()}`);
+        const movieDetailsData = await movieDetailsResponse.json();
+        const fullMovies = movieData.items.map(item => ({
+            ...item,
+            contentDetails: movieDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
+        }));
+
+        const animeVideoIds = animeData.items.map(item => item.id.videoId).join(',');
+        const animeDetailsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${animeVideoIds}&key=${getApiKey()}`);
+        const animeDetailsData = await animeDetailsResponse.json();
+        const fullAnime = animeData.items.map(item => ({
+            ...item,
+            contentDetails: animeDetailsData.items.find(detail => detail.id === item.id.videoId)?.contentDetails
+        }));
+
+        exploreTotalResults = [
+            ...trailerData.items,
+            ...fullMovies.filter(isFullLengthVideo),
+            ...fullAnime.filter(video => isFullLengthVideo(video) && isAnimeRelated(video))
+        ].sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+
+        // Cache search results with timestamp
+        saveToCache('cachedSearchResults', exploreTotalResults);
+        saveToCache('cachedSearchPage', exploreCurrentPage);
+
+        exploreCurrentPage = 0;
+        displaySearchResults();
+        updatePagination();
+        saveToHistory(query, exploreTotalResults[0]?.snippet?.thumbnails?.medium?.url || '');
+    } catch (error) {
+        showError(`Failed to search: ${error.message}`);
+        console.error('Search error:', error);
+    } finally {
+        showLoading(false);
+    }
+}
 
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
@@ -2062,37 +2663,121 @@
         return items.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
     }
 
-    function playVideo(videoId, title, thumbnail) {
-        let watchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
-        watchHistory.unshift({ videoId, title, thumbnail, date: new Date().toISOString() });
-        if (watchHistory.length > 100) {
-            watchHistory = watchHistory.slice(0, 100);
-        }
-        localStorage.setItem('watchHistory', JSON.stringify(watchHistory));
-
-        if (document.getElementById('mePage').classList.contains('active')) {
-            updateMeTabStats();
-        }
-
-        if (title) {
-            saveToHistory(title, thumbnail);
-        }
-
+ function playVideo(videoId, title, thumbnail) {
+    // If this is a short, open in fallback player
+    const isShort = document.querySelector(`.shorts-card[data-video-id="${videoId}"]`);
+    
+    if (isShort) {
         const fallbackWindow = window.open(
-            `fallback-player.html?v=${videoId}`,
+            `fallback-player.html?v=${videoId}&shorts=true`,
             '_blank',
-            'width=900,height=506'
+            'width=400,height=700'
         );
-
+        
         setTimeout(() => {
             if (!fallbackWindow || fallbackWindow.closed) {
                 window.open(
-                    `https://www.youtube.com/watch?v=${videoId}`,
+                    `https://www.youtube.com/shorts/${videoId}`,
                     '_blank'
                 );
             }
         }, 300);
+        return;
     }
+    
+    // Original playVideo logic for regular videos...
+    let watchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
+    watchHistory.unshift({ videoId, title, thumbnail, date: new Date().toISOString() });
+    localStorage.setItem('watchHistory', JSON.stringify(watchHistory));
+
+    const fallbackWindow = window.open(
+        `fallback-player.html?v=${videoId}`,
+        '_blank',
+        'width=900,height=506'
+    );
+
+    setTimeout(() => {
+        if (!fallbackWindow || fallbackWindow.closed) {
+            window.open(
+                `https://www.youtube.com/watch?v=${videoId}`,
+                '_blank'
+            );
+        }
+    }, 300);
+}
+
+
+
+function setupShortsObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const videoId = entry.target.dataset.videoId;
+            const playerData = shortsPlayers.get(videoId);
+            
+            if (!playerData) return;
+
+            if (entry.isIntersecting) {
+                // Play when visible
+                if (!playerData.element.src) {
+                    // Use YouTube iframe API for better compatibility
+                    playerData.element.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&=1&playsinline=1&controls=0&enablejsapi=1`;
+                }
+                playerData.element.play()  // Fixed: Changed playerElement to playerData.element
+                    .then(() => {
+                        currentPlayingShort = videoId;
+                    })
+                    .catch(e => {
+                        console.log("Autoplay failed, trying muted:", e);
+                        playerData.element.muted = true;
+                        playerData.element.play();
+                    });
+            } else {
+                // Pause when not visible
+                playerData.element.pause();
+                if (currentPlayingShort === videoId) {
+                    currentPlayingShort = null;
+                }
+            }
+        });
+    }, {
+        threshold: 0.8,
+        rootMargin: '0px 0px -10% 0px'
+    });
+
+    // Observe all shorts cards
+    document.querySelectorAll('.shorts-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+
+// Control functions
+function toggleShortMute(btn) {
+    const card = btn.closest('.shorts-card');
+    const videoId = card.dataset.videoId;
+    const playerData = shortsPlayers.get(videoId);
+
+    if (!playerData || !playerData.player) {
+        console.error('No player found for video ID:', videoId);
+        return;
+    }
+
+    const { player } = playerData;
+
+    if (playerData.isMuted) {
+        player.unMute();
+        playerData.isMuted = false;
+        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else {
+        player.mute();
+        playerData.isMuted = true;
+        btn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    }
+}
+
+// Shorts player management
+let currentPlayingShort = null;
+const shortsPlayers = new Map();
 
     function saveToHistory(query, thumbnail) {
         let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
@@ -2113,38 +2798,60 @@
     }
 
     function toggleAuthMode() {
-        isSignUpMode = !isSignUpMode;
-        document.getElementById('authModalTitle').textContent = isSignUpMode ? 'Sign Up' : 'Login';
-        document.getElementById('authSubmitBtn').textContent = isSignUpMode ? 'Sign Up' : 'Login';
-        document.getElementById('authToggleText').textContent = isSignUpMode ? 'Login' : 'Sign Up';
-        document.getElementById('contentPreferences').style.display = isSignUpMode ? 'block' : 'none';
-        document.getElementById('authError').style.display = 'none';
-    }
+    isSignUpMode = !isSignUpMode;
+    document.getElementById('authModalTitle').textContent = isSignUpMode ? 'Join TUBE TRAILER Today!' : 'Welcome Back!';
+    document.getElementById('authModalBlurb').textContent = isSignUpMode ? 'Unlock personalized content and premium features.' : 'Access your personalized content and settings.';
+    document.getElementById('authSubmitBtn').textContent = isSignUpMode ? 'Sign Up' : 'Login';
+    document.getElementById('authToggleText').textContent = isSignUpMode ? 'Login' : 'Sign Up';
+    const contentPreferences = document.getElementById('contentPreferences');
+    contentPreferences.style.display = isSignUpMode ? 'block' : 'none';
+    contentPreferences.required = isSignUpMode; // Toggle required attribute
+    document.getElementById('authError').style.display = 'none';
+}
 
     function showAccountModal() {
-        const modal = document.getElementById('accountModal');
-        const user = JSON.parse(localStorage.getItem('userProfile')) || {};
-        document.getElementById('userName').value = user.name || '';
-        document.getElementById('userEmail').value = user.email || '';
-        modal.style.display = 'block';
+    const user = auth.currentUser;
+    if (user) {
+        const preferences = JSON.parse(localStorage.getItem('userPreferences')) || {};
+        const contentSelect = document.getElementById('accountContentPreferences');
+        contentSelect.value = preferences.contentType || '';
+        document.getElementById('accountModal').style.display = 'block';
+    } else {
+        showAuthModal();
     }
+}
+
+
 
     function closeModal() {
         document.getElementById('accountModal').style.display = 'none';
     }
 
-    function saveAccount(e) {
-        e.preventDefault();
-        const userProfile = {
-            name: document.getElementById('userName').value.trim(),
-            email: document.getElementById('userEmail').value.trim(),
-            joined: new Date().toISOString()
-        };
-        localStorage.setItem('userProfile', JSON.stringify(userProfile));
-        updateUserStatus();
+    async function saveAccount(event) {
+    event.preventDefault();
+    try {
+        const contentType = document.getElementById('accountContentPreferences').value;
+        if (!contentType) {
+            showError('Please select a content type.');
+            return;
+        }
+
+        localStorage.setItem('userPreferences', JSON.stringify({ contentType }));
+        showNotificationModal('Preferences updated successfully!');
         closeModal();
-        showToast('Profile saved successfully');
+
+        // Refresh personalized content
+        const currentPage = document.querySelector('.page.active').id;
+        if (currentPage === 'explorePage') {
+            await fetchForYouContent();
+        } else if (currentPage === 'shortsPage') {
+            await fetchShortsContent();
+        }
+    } catch (error) {
+        showError(`Error saving preferences: ${error.message}`);
+        console.error('Save account error:', error);
     }
+}
 
     function signOut() {
         firebaseSignOut(auth).then(() => {
@@ -2160,28 +2867,42 @@
     }
 
     function updateUserStatus() {
-        const user = auth.currentUser;
-        const userProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
-        const statusElement = document.getElementById('userStatus');
-        const nameElement = document.getElementById('userProfileName');
-        const avatarIcon = document.querySelector('.profile-avatar i');
+    const user = auth.currentUser;
+    const statusElement = document.getElementById('userStatus');
+    const nameElement = document.getElementById('userProfileName');
+    const avatarImg = document.getElementById('userAvatarImg');
 
-        if (user) {
-            nameElement.textContent = userProfile.name || user.email || 'User';
-            statusElement.textContent = 'Premium Member';
-            if (avatarIcon) {
-                avatarIcon.className = 'fas fa-user-check';
-                avatarIcon.parentElement.style.backgroundColor = '#4CAF50';
-            }
-        } else {
-            nameElement.textContent = 'Guest User';
-            statusElement.textContent = 'Basic Member';
-            if (avatarIcon) {
-                avatarIcon.className = 'fas fa-user';
-                avatarIcon.parentElement.style.backgroundColor = 'var(--primary)';
-            }
-        }
+    if (user && user.email) {
+        const emailPrefix = user.email.split('@')[0];
+        nameElement.textContent = user.displayName || emailPrefix || 'User';
+        statusElement.textContent = 'Premium Member';
+        avatarImg.src = user.photoURL || 'https://via.placeholder.com/100';
+    } else {
+        nameElement.textContent = 'Guest User';
+        statusElement.textContent = 'Basic Member';
+        avatarImg.src = 'https://via.placeholder.com/100';
     }
+
+    // Update stats in stats-grid
+    updateMeTabStats();
+}
+
+// Profile header event listeners
+document.getElementById('userAvatarImg').addEventListener('click', () => {
+    if (auth.currentUser) {
+        showAccountModal();
+    } else {
+        showAuthModal();
+    }
+});
+
+document.getElementById('editProfileBtn').addEventListener('click', () => {
+    if (auth.currentUser) {
+        showAccountModal();
+    } else {
+        showAuthModal();
+    }
+});
 
     function setTheme(theme) {
         if (theme === 'dark') {
@@ -2214,23 +2935,15 @@
     }
 
     function hideAboutModal() {
-        document.getElementById('aboutModal').style.display = 'none';
+    const aboutModal = document.getElementById('aboutModal');
+    if (aboutModal) {
+        aboutModal.style.display = 'none';
+    } else {
+        console.warn('About modal element not found');
     }
+}
 
-    function showToast(message) {
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }, 100);
-    }
-
+    
     function clearAllCache() {
         Object.keys(localStorage).forEach(key => {
             if (key.startsWith('preload-') || key.includes('Trending') || key.includes('Results')) {
@@ -2241,38 +2954,55 @@
     }
 
     function updateMeTabStats() {
-        const watchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
-        document.getElementById('watchHistoryCount').textContent = watchHistory.length;
-        const searchCount = JSON.parse(localStorage.getItem('searchCount')) || 0;
-        document.getElementById('searchHistoryCount').textContent = searchCount;
+    const watchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
+    const meWatchHistoryCount = document.getElementById('meWatchHistoryCount');
+    if (meWatchHistoryCount) {
+        meWatchHistoryCount.textContent = watchHistory.length;
     }
 
-    document.getElementById('authForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('authEmail').value;
-        const password = document.getElementById('authPassword').value;
-        const preferences = document.getElementById('contentPreferences').value;
+    const searchCount = JSON.parse(localStorage.getItem('searchCount')) || 0;
+    const meSearchHistoryCount = document.getElementById('meSearchHistoryCount');
+    if (meSearchHistoryCount) {
+        meSearchHistoryCount.textContent = searchCount;
+    }
+}
 
-        try {
-            if (isSignUpMode) {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                console.log('User signed up:', userCredential.user);
-                localStorage.setItem('userPreferences', JSON.stringify({ contentType: preferences }));
-                showToast('Account created successfully!');
-            } else {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log('User logged in:', userCredential.user);
-                showToast('Logged in successfully!');
-            }
-            closeAuthModal();
-            updateUserStatus();
-            fetchForYouContent();
-        } catch (error) {
-            console.error('Auth error:', error);
-            showAuthError(error.message);
+   /* event listener auth form*/ document.getElementById('authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('authEmail').value;
+    const password = document.getElementById('authPassword').value;
+    const preferences = document.getElementById('contentPreferences').value;
+
+    try {
+        if (isSignUpMode) {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('User signed up:', userCredential.user);
+            localStorage.setItem('userPreferences', JSON.stringify({ contentType: preferences }));
+            showToast('Account created successfully!');
+        } else {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log('User logged in:', userCredential.user);
+            showToast('Logged in successfully!');
         }
-    });
-
+        closeAuthModal();
+        updateUserStatus();
+        fetchForYouContent();
+    } catch (error) {
+        console.error('Auth error:', error);
+        const errorMessages = {
+            'auth/invalid-credential': 'Invalid password or email.',
+            'auth/invalid-email': 'Please enter a valid email address.',
+            'auth/user-not-found': 'Invalid password or email.',
+            'auth/wrong-password': 'Invalid password or email.',
+            'auth/email-already-in-use': 'This email is already registered. Please log in.',
+            'auth/weak-password': 'Password must be at least 6 characters long.',
+            'auth/missing-password': 'Please enter a password.',
+            'auth/missing-email': 'Please enter an email address.'
+        };
+        const customMessage = errorMessages[error.code] || 'An error occurred. Please try again.';
+        showAuthError(customMessage);
+    }
+});
     onAuthStateChanged(auth, (user) => {
         console.log('Auth state changed:', user ? user.email : 'No user');
         updateUserStatus();
@@ -2283,77 +3013,298 @@
         }
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('themePreference') || 'dark';
-        setTheme(savedTheme);
-        updateUserStatus();
+   //Dom content document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('themePreference') || 'dark';
+    setTheme(savedTheme);
+    updateUserStatus();
+
+    // Load cached results with expiration check
+    const cachedTrailerResults = loadFromCache('cachedTrailerResults') || [];
+    const cachedMovieResults = loadFromCache('cachedMovieResults') || [];
+    const cachedAnimeResults = loadFromCache('cachedAnimeResults') || [];
+    const cachedSearchResults = loadFromCache('cachedSearchResults') || [];
+    const cachedSearchPage = loadFromCache('cachedSearchPage') || 0;
+
+    if (cachedTrailerResults.length > 0 && cachedMovieResults.length > 0 && cachedAnimeResults.length > 0) {
+        console.log('Loading cached explore results from localStorage:', {
+            trailerResults: cachedTrailerResults.length + ' items',
+            movieResults: cachedMovieResults.length + ' items',
+            animeResults: cachedAnimeResults.length + ' items'
+        });
+        trailerResults = cachedTrailerResults;
+        movieResults = cachedMovieResults;
+        animeResults = cachedAnimeResults;
+        displayExploreContent();
+        createExploreCarousel();
+        fetchForYouContent();
+    } else {
+        console.log('No valid cached explore results found or cache expired. Fetching new content.');
         fetchExploreContent();
+    }
 
-        // Search input event listeners
-        const searchInput = document.getElementById('search');
-        searchInput.addEventListener('focus', showSearchHistory);
-        searchInput.addEventListener('blur', hideSearchHistory);
-        searchInput.addEventListener('input', filterSearchHistory);
-        searchInput.addEventListener('keypress', handleKeyPress);
-
-        // Button event listeners
-        document.getElementById('searchBtn').addEventListener('click', searchContent);
-        document.getElementById('reloadBtn').addEventListener('click', clearAllCache);
-
-        // Navigation event listeners
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = item.getAttribute('data-page');
-                if (pageId) {
-                    showPage(pageId);
-                }
-            });
+    if (cachedSearchResults.length > 0) {
+        console.log('Loading cached search results from localStorage:', {
+            searchResults: cachedSearchResults.length + ' items',
+            searchPage: cachedSearchPage
         });
+        exploreTotalResults = cachedSearchResults;
+        exploreCurrentPage = cachedSearchPage;
+        displaySearchResults();
+        updatePagination();
+    } else {
+        console.log('No valid cached search results found or cache expired.');
+    }
 
-        // Auth modal event listeners
-        document.getElementById('cancelAuthBtn').addEventListener('click', closeAuthModal);
-        document.getElementById('toggleAuthBtn').addEventListener('click', toggleAuthMode);
+    // Search input event listeners
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('focus', showSearchHistory);
+    searchInput.addEventListener('blur', hideSearchHistory);
+    searchInput.addEventListener('input', filterSearchHistory);
+    searchInput.addEventListener('keypress', handleKeyPress);
 
-        // Account modal event listeners
-        document.getElementById('accountForm').addEventListener('submit', saveAccount);
-        document.getElementById('cancelAccountBtn').addEventListener('click', closeModal);
-        document.getElementById('signOutBtn').addEventListener('click', signOut);
+    // Button event listeners
+    document.getElementById('searchBtn').addEventListener('click', searchContent);
+    document.getElementById('reloadBtn').addEventListener('click', clearAllCache);
 
-        // Settings event listeners
-        document.getElementById('accountBtn').addEventListener('click', showAccountModal);
-        document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-        document.getElementById('notificationBtn').addEventListener('click', showNotificationModal);
-        document.getElementById('aboutBtn').addEventListener('click', showAboutModal);
-
-        // Notification modal event listener
-        document.getElementById('closeNotificationBtn').addEventListener('click', hideNotificationModal);
-
-        // Modal close on outside click
-        window.addEventListener('click', (event) => {
-            const authModal = document.getElementById('authModal');
-            const accountModal = document.getElementById('accountModal');
-            const notificationModal = document.getElementById('notificationModal');
-            if (event.target === authModal) {
-                closeAuthModal();
+    // Navigation event listeners
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = item.getAttribute('data-page');
+            if (pageId) {
+                showPage(pageId);
             }
-            if (event.target === accountModal) {
-                closeModal();
-            }
-            if (event.target === notificationModal) {
-                hideNotificationModal();
-            }
-        });
-
-        // Persist last search
-        const lastSearch = localStorage.getItem('lastSearch');
-        if (lastSearch) {
-            searchInput.value = lastSearch;
-        }
-        searchInput.addEventListener('input', (e) => {
-            localStorage.setItem('lastSearch', e.target.value);
         });
     });
+
+    // Auth modal event listeners
+    document.getElementById('cancelAuthBtn').addEventListener('click', closeAuthModal);
+    document.getElementById('toggleAuthBtn').addEventListener('click', toggleAuthMode);
+
+    // Account modal event listeners
+    document.getElementById('accountForm').addEventListener('submit', saveAccount);
+    document.getElementById('cancelAccountBtn').addEventListener('click', closeModal);
+    document.getElementById('signOutBtn').addEventListener('click', signOut);
+
+    // Settings event listeners
+    document.getElementById('accountBtn').addEventListener('click', showAccountModal);
+    document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+    document.getElementById('notificationBtn').addEventListener('click', showNotificationModal);
+    document.getElementById('aboutBtn').addEventListener('click', showAboutModal);
+
+    // Notification and About modal event listeners
+document.getElementById('closeNotificationBtn').addEventListener('click', hideNotificationModal);
+document.getElementById('closeAboutBtn')?.addEventListener('click', hideAboutModal);
+
+    // Modal close on outside click
+ window.addEventListener('click', (event) => {
+    const authModal = document.getElementById('authModal');
+    const accountModal = document.getElementById('accountModal');
+    const notificationModal = document.getElementById('notificationModal');
+    const aboutModal = document.getElementById('aboutModal');
+    if (event.target === authModal) {
+        closeAuthModal();
+    }
+    if (event.target === accountModal) {
+        closeModal();
+    }
+    if (event.target === notificationModal) {
+        hideNotificationModal();
+    }
+    if (event.target === aboutModal) {
+        hideAboutModal();
+    }
+});
+
+    // Persist last search
+    const lastSearch = localStorage.getItem('lastSearch');
+    if (lastSearch) {
+        searchInput.value = lastSearch;
+    }
+    searchInput.addEventListener('input', (e) => {
+        localStorage.setItem('lastSearch', e.target.value);
+    });
+
+
+
+    async function fetchShortsContent() {
+    const user = auth.currentUser;
+    if (!user) {
+        document.getElementById('shortsResults').innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-user-lock"></i>
+                <p>Sign in to see personalized Shorts</p>
+            </div>
+        `;
+        return;
+    }
+
+    const preferences = JSON.parse(localStorage.getItem('userPreferences'));
+    if (!preferences?.contentType) {
+        document.getElementById('shortsResults').innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-cog"></i>
+                <p>Set your preferences in Account Settings</p>
+            </div>
+        `;
+        return;
+    }
+
+    showLoading(true);
+    try {
+        const response = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(
+                preferences.contentType + ' shorts'
+            )}&type=video&videoDuration=short&key=${getApiKey()}`
+        );
+        const data = await response.json();
+
+        if (data.error) throw data.error;
+
+        const shortsContainer = document.getElementById('shortsResults');
+        shortsContainer.innerHTML = '';
+
+        if (data.items?.length > 0) {
+            data.items.forEach((video) => {
+                shortsContainer.appendChild(generateShortsCard(video));
+            });
+            
+            // Set up observer after shorts are loaded
+            setTimeout(setupShortsObserver, 100);
+        } else {
+            shortsContainer.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-video-slash"></i>
+                    <p>No Shorts found for your preferences</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        showError(`Failed to load Shorts: ${error.message}`);
+    } finally {
+        showLoading(false);
+    }
+}
+function generateShortsCard(video) {
+    const card = document.createElement('div');
+    card.className = 'shorts-card';
+    card.dataset.videoId = video.id.videoId;
+
+    card.innerHTML = `
+        <iframe class="shorts-player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="shorts-overlay">
+            <div class="shorts-title">${escapeHtml(video.snippet.title)}</div>
+            <div class="shorts-channel">${escapeHtml(video.snippet.channelTitle)}</div>
+        </div>
+        <div class="shorts-controls">
+            <button class="shorts-control-btn" onclick="toggleShortMute(this)">
+                <i class="fas fa-volume-mute"></i>
+            </button>
+            <button class="shorts-control-btn" onclick="likeShort(this)">
+                <i class="far fa-heart"></i>
+            </button>
+        </div>
+        <div class="shorts-autoplay">Auto-play</div>
+    `;
+
+    const player = card.querySelector('.shorts-player');
+    
+    
+    shortsPlayers.set(video.id.videoId, {
+        element: player,
+        card: card,
+        isMuted: true
+    });
+
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('.shorts-controls')) return;
+        playVideo(video.id.videoId, escapeHtml(video.snippet.title), video.snippet.thumbnails.medium.url);
+    });
+
+    return card;
+}
+
+</script>
+
+<script src="https://www.youtube.com/iframe_api "></script>
+
+<script>
+    let shortsPlayers = new Map(); // Already defined earlier in your code
+
+    
+    function onYouTubeIframeAPIReady() {
+        document.querySelectorAll('.shorts-card').forEach(card => {
+            const videoId = card.dataset.videoId;
+            const iframe = card.querySelector('.shorts-player');
+
+            // Create YouTube Player instance
+            const player = new YT.Player(iframe, {
+                events: {
+                    'onReady': () => {
+                        console.log('Player ready:', videoId);
+                        player.mute(); // Mute by default
+                    }
+                }
+            });
+
+            // Store player reference with mute state
+            shortsPlayers.set(videoId, {
+                player,
+                isMuted: true
+            });
+        });
+    }
+
+function likeShort(btn) {
+    const card = btn.closest('.shorts-card');
+    const videoId = card.dataset.videoId;
+
+    // Toggle active state
+    btn.classList.toggle('active');
+
+    // Optional: Save liked shorts to localStorage
+    let likedShorts = JSON.parse(localStorage.getItem('likedShorts')) || [];
+
+    if (btn.classList.contains('active')) {
+        if (!likedShorts.includes(videoId)) {
+            likedShorts.push(videoId);
+        }
+        showToast('Liked!');
+    } else {
+        likedShorts = likedShorts.filter(id => id !== videoId);
+        showToast('Unliked');
+    }
+
+    localStorage.setItem('likedShorts', JSON.stringify(likedShorts));
+}
+
+function showToast(message) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        `;
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = 1;
+    setTimeout(() => {
+        toast.style.opacity = 0;
+    }, 2000);
+}
 </script>
 </body>
 </html>
